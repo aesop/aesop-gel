@@ -3,7 +3,7 @@ export { components };
 export {
   Accordion,
   AddToCartButton,
-  Audio,
+  // Audio,
   BodyCopy,
   Breadcrumbs,
   Button,
@@ -21,7 +21,7 @@ export {
   FooterBlock,
   TextInputV2,
   FullWidthHeroScroll,
-  GoogleMap,
+  // GoogleMap,
   Heading,
   Hidden,
   HorizontalProductDisplayAccordion,
@@ -76,8 +76,8 @@ export { contexts };
 export {
   AddToCartContextProvider,
   useAddToCartContext,
-  GoogleMapsContextProvider,
-  useGoogleMapsContext,
+  // GoogleMapsContextProvider,
+  // useGoogleMapsContext,
   LoadMoreContextProvider,
   useLoadMoreContext,
   NavBarThemeContextProvider,

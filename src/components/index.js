@@ -1,6 +1,6 @@
 export { Accordion } from './Accordion';
 export { AddToCartButton } from './AddToCartButton';
-export { Audio } from './Audio';
+// export { Audio } from './Audio';
 export { BodyCopy } from './BodyCopy';
 export { Breadcrumbs } from './Breadcrumbs';
 export { Button } from './Button';
@@ -18,7 +18,7 @@ export { FlyinPanel } from './FlyinPanel';
 export { FooterBlock } from './FooterBlock';
 export { TextInputV2 } from './TextInputV2';
 export { FullWidthHeroScroll } from './FullWidthHeroScroll';
-export { GoogleMap } from './GoogleMap';
+// export { GoogleMap } from './GoogleMap';
 export { Heading } from './Heading';
 export { Hidden } from './Hidden';
 export { HorizontalProductDisplayAccordion } from './HorizontalProductDisplayAccordion';

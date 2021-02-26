@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
@@ -10,11 +10,6 @@ import { Overlay } from '~/components/Overlay';
 import { Transition } from '~/components/Transition';
 import styles from './FlyinPanel.module.css';
 
-/** Set up the Flyin component's anchor point for ReactDOM.createPortal */
-const modalRoot = document.createElement('div');
-modalRoot.setAttribute('id', 'aesop-gel-flyin-root');
-document.body.appendChild(modalRoot);
-
 const FlyinPanel = ({
   children,
   className,
@@ -24,8 +19,18 @@ const FlyinPanel = ({
   onClose,
   theme,
 }) => {
+  const modalRoot = useRef();
   useEscapeKeyListener(onClose);
   useOverflowHidden(isVisible);
+
+  useEffect(() => {
+  /** Set up the Flyin component's anchor point for ReactDOM.createPortal */
+    if (process.browswer) {
+      modalRoot.current = document.createElement('div');
+      modalRoot.setAttribute('id', 'aesop-gel-flyin-root');
+      document.body.appendChild(modalRoot);
+    }
+  }, []);
 
   const classSet = cx(styles.base, styles[theme], className);
   const asideRole = 'note';
@@ -73,7 +78,7 @@ const FlyinPanel = ({
             </aside>
           </Transition>
         </>,
-        modalRoot,
+        modalRoot.current,
       )}
     </>
   );

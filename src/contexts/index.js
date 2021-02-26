@@ -3,10 +3,10 @@ export {
   useAddToCartContext,
 } from './AddToCartContext';
 
-export {
-  GoogleMapsContextProvider,
-  useGoogleMapsContext,
-} from './GoogleMapsContext';
+// export {
+//   GoogleMapsContextProvider,
+//   useGoogleMapsContext,
+// } from './GoogleMapsContext';
 
 export { LoadMoreContextProvider, useLoadMoreContext } from './LoadMoreContext';
 

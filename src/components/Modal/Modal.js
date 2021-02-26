@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
@@ -8,19 +8,23 @@ import { Overlay } from '~/components/Overlay';
 import { Transition } from '~/components/Transition';
 import styles from './Modal.module.css';
 
-/** Set up the Modal component's anchor point for ReactDOM.createPortal */
-let modalRoot = document.getElementById('aesop-gel-modal-root');
-
-if (!modalRoot) {
-  modalRoot = document.createElement('div');
-  modalRoot.setAttribute('id', 'aesop-gel-modal-root');
-  document.body.appendChild(modalRoot);
-}
-
 const Modal = ({ children, className, copy, isVisible, onClose, theme }) => {
+  const modalRoot = useRef();
   useEscapeKeyListener(onClose);
   useOverflowHidden(isVisible);
 
+  useEffect(() => {
+    if (process.browser) {
+      /** Set up the Modal component's anchor point for ReactDOM.createPortal */
+      modalRoot.current = document.getElementById('aesop-gel-modal-root');
+
+      if (!modalRoot.current) {
+        modalRoot.current = document.createElement('div');
+        modalRoot.setAttribute('id', 'aesop-gel-modal-root');
+        document.body.appendChild(modalRoot);
+      }
+    }
+  }, []);
   const classSet = cx(styles.base, styles[theme], className);
 
   return (
@@ -54,7 +58,7 @@ const Modal = ({ children, className, copy, isVisible, onClose, theme }) => {
             </aside>
           </Transition>
         </>,
-        modalRoot,
+        modalRoot.current,
       )}
     </>
   );
