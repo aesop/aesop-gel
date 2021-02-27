@@ -1,12 +1,48 @@
-name: Deploy Storybook to GH Pages
+name: On Tag Push
 on:
   push:
     tags:
       - v*
 
-  workflow_dispatch:
+env:
+  NODE_VERSION: 14.15.4
 
 jobs:
+  update_web_ui:
+    name: Update Web UI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v2
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Store tag name
+        run: |
+          echo "GEL_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+
+      - name: Checkout Web UI
+        uses: actions/checkout@v2
+        with:
+          repository: 'aesop/aesop-web-ui'
+          fetch-depth: 1
+          ref: 'develop'
+          token: ${{ secrets.X_GITHUB_TOKEN }}
+
+      - name: Checkout private tools
+        uses: actions/checkout@v2
+        with:
+          repository: aesop/aesop-github-action
+          token: ${{ secrets.X_GITHUB_TOKEN }}
+          path: actions
+
+      - name: Update Gel
+        uses: ./actions/create-pr
+        with:
+          TOKEN: ${{ secrets.X_GITHUB_TOKEN }}
+          VERSION: ${{ env.GEL_VERSION }}
+          CREATE_IN: 'aesop-web-ui'
+          BASE_BRANCH: 'develop'
+
   deploy_storybook:
     name: Deploy Storybook
     runs-on: ubuntu-latest
@@ -16,7 +52,7 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-node@v2
         with:
-          node-version: '14.15.4'
+          node-version: ${{ env.NODE_VERSION }}
 
       - name: Store tag name
         run: |
