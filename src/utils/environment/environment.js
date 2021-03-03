@@ -20,7 +20,7 @@ const isFirefox = isInBrowser() && typeof InstallTrigger !== 'undefined';
 const isSafari =
   isInBrowser() &&
   (/constructor/i.test(window.HTMLElement) ||
-    (function(p) {
+    (function (p) {
       return p.toString() === '[object SafariRemoteNotification]';
     })(
       !window['safari'] ||

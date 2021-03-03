@@ -17,7 +17,14 @@
     "es6": true,
     "jest": true
   },
-  "plugins": ["import", "react", "react-hooks", "jsx-a11y", "testing-library", "jest-dom"],
+  "plugins": [
+    "import",
+    "react",
+    "react-hooks",
+    "jsx-a11y",
+    "testing-library",
+    "jest-dom"
+  ],
   "extends": [
     "eslint:recommended",
     "eslint-config-prettier",
@@ -27,7 +34,7 @@
     "plugin:jsx-a11y/recommended",
     "plugin:testing-library/recommended",
     "plugin:testing-library/react",
-    "plugin:jest-dom/recommended",
+    "plugin:jest-dom/recommended"
   ],
   "parserOptions": {
     "ecmaVersion": 2018,
@@ -92,7 +99,10 @@
     "no-irregular-whitespace": "error",
     "no-lonely-if": "off",
     "no-mixed-spaces-and-tabs": "error",
-    "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 0, "maxBOF": 0 }],
+    "no-multiple-empty-lines": [
+      "error",
+      { "max": 1, "maxEOF": 0, "maxBOF": 0 }
+    ],
     "no-new": "warn",
     "no-self-compare": "error",
     "no-shadow": "off",
@@ -150,7 +160,7 @@
     "space-before-function-paren": [
       "error",
       {
-        "anonymous": "never",
+        "anonymous": "always",
         "named": "never",
         "asyncArrow": "always"
       }
