@@ -1,20 +1,20 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { FC } from 'react';
 import cx from 'classnames';
 import { Loading } from '~/components/Loading';
 import { AudioHeader } from './components/AudioHeader';
 import { AudioFooter } from './components/AudioFooter';
 import { useWaveSurfer } from './Audio.customHooks';
+import type { AudioProps } from './Audio.types';
 import styles from './Audio.module.css';
 
-const Audio = ({
+const Audio: FC<AudioProps> = ({
   artistName,
   audioUrl,
   className,
   copy,
-  hasAutoPlay,
+  hasAutoPlay = false,
   id,
-  progressColor,
+  progressColor = 'orange',
   trackTitle,
 }) => {
   const {
@@ -74,44 +74,6 @@ const Audio = ({
       />
     </article>
   );
-};
-
-Audio.propTypes = {
-  audioUrl: PropTypes.string,
-  artistName: PropTypes.string,
-  className: PropTypes.string,
-  copy: PropTypes.shape({
-    downloadLabel: PropTypes.string,
-    downloadTitle: PropTypes.string,
-    loading: PropTypes.string,
-    pause: PropTypes.string,
-    play: PropTypes.string,
-    seekBackward: PropTypes.string,
-    seekForward: PropTypes.string,
-  }),
-  hasAutoPlay: PropTypes.bool,
-  id: PropTypes.string,
-  progressColor: PropTypes.oneOf(['orange', 'green', 'blue']),
-  trackTitle: PropTypes.string,
-};
-
-Audio.defaultProps = {
-  audioUrl: undefined,
-  artistName: undefined,
-  className: undefined,
-  copy: {
-    downloadLabel: undefined,
-    downloadTitle: undefined,
-    loading: undefined,
-    pause: undefined,
-    play: undefined,
-    seekBackward: undefined,
-    seekForward: undefined,
-  },
-  hasAutoPlay: false,
-  id: undefined,
-  progressColor: 'orange',
-  trackTitle: undefined,
 };
 
 export { Audio };

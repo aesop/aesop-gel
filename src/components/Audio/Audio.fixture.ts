@@ -1,4 +1,6 @@
-const AudioFixture = {
+import { AudioProps } from './Audio.types';
+
+const AudioFixture: AudioProps = {
   audioUrl: './assets/audio/Istros_Imagined.mp3',
   artistName: 'Jesse Paris Smith',
   className: undefined,

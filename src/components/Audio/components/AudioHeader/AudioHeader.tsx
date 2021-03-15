@@ -1,9 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Heading } from '~/components/Heading';
+import type { AudioHeaderProps } from './AudioHeader.types';
 import styles from './AudioHeader.module.css';
 
-const AudioHeader = React.memo(props => (
+const AudioHeader = React.memo<AudioHeaderProps>(props => (
   <header className={styles.base}>
     <Heading
       className={styles.artistName}
@@ -18,15 +18,5 @@ const AudioHeader = React.memo(props => (
     </Heading>
   </header>
 ));
-
-AudioHeader.propTypes = {
-  artistName: PropTypes.string,
-  trackTitle: PropTypes.string,
-};
-
-AudioHeader.defaultProps = {
-  artistName: undefined,
-  trackTitle: undefined,
-};
 
 export { AudioHeader };

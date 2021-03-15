@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 import throttle from 'lodash/throttle';
 import { COLORS } from '~/constants';
 import { getProgressColorHex } from './Audio.utils';
+import type { ProgressColor } from './Audio.types';
 
-const useWaveSurfer = (progressColor, hasAutoPlay) => {
+const useWaveSurfer = (progressColor: ProgressColor, hasAutoPlay: boolean) => {
   const waveformRef = useRef(null);
   const wavesurfer = useRef(null);
   const trackRef = useRef(null);

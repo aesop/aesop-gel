@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import cx from 'classnames';
 import moment from 'moment';
 import { HYPERLINK_STYLE_TYPES } from '~/constants';
@@ -7,12 +6,13 @@ import { Hyperlink } from '~/components/Hyperlink';
 import { Icon } from '~/components/Icon';
 import { PausePlayButton } from '~/components/Audio/components/PausePlayButton';
 import { SeekButton } from '~/components/Audio/components/SeekButton';
+import type { AudioFooterProps } from './AudioFooter.types';
 import styles from './AudioFooter.module.css';
 
-const AudioFooter = React.memo(
+const AudioFooter = React.memo<AudioFooterProps>(
   ({
     audioUrl,
-    copy,
+    copy = {},
     duration,
     isLoading,
     isPlaying,
@@ -20,7 +20,7 @@ const AudioFooter = React.memo(
     onSeekForwardButtonClick,
     onPlayPauseButtonClick,
     progress,
-    progressColor,
+    progressColor = 'orange',
   }) => {
     return (
       <footer className={cx(styles.base, styles[progressColor])}>
@@ -81,47 +81,5 @@ const AudioFooter = React.memo(
     );
   },
 );
-
-AudioFooter.propTypes = {
-  audioUrl: PropTypes.string,
-  copy: PropTypes.shape({
-    downloadTitle: PropTypes.string,
-    downloadLabel: PropTypes.string,
-    loading: PropTypes.string,
-    pause: PropTypes.string,
-    play: PropTypes.string,
-    seekBackwardTitle: PropTypes.string,
-    seekForwardTitle: PropTypes.string,
-  }),
-  duration: PropTypes.number,
-  isLoading: PropTypes.bool,
-  isPlaying: PropTypes.bool,
-  onSeekBackwardButtonClick: PropTypes.func,
-  onSeekForwardButtonClick: PropTypes.func,
-  onPlayPauseButtonClick: PropTypes.func,
-  progress: PropTypes.number,
-  progressColor: PropTypes.oneOf(['orange', 'green', 'blue']),
-};
-
-AudioFooter.defaultProps = {
-  audioUrl: undefined,
-  copy: {
-    downloadTitle: undefined,
-    downloadLabel: undefined,
-    loading: undefined,
-    pause: undefined,
-    play: undefined,
-    seekBackwardTitle: undefined,
-    seekForwardTitle: undefined,
-  },
-  duration: undefined,
-  isLoading: undefined,
-  isPlaying: undefined,
-  onSeekBackwardButtonClick: undefined,
-  onSeekForwardButtonClick: undefined,
-  onPlayPauseButtonClick: undefined,
-  progress: undefined,
-  progressColor: 'orange',
-};
 
 export { AudioFooter };

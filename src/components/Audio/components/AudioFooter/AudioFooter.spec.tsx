@@ -8,9 +8,7 @@ describe('<Audio.AudioFooter />', () => {
   });
 
   it('should render base component correctly', () => {
-    const { container } = render(
-      <AudioFooter artistName="foo" audioUrl="/" trackTitle="bar" />,
-    );
+    const { container } = render(<AudioFooter audioUrl="/" />);
 
     expect(container).toMatchSnapshot();
   });
