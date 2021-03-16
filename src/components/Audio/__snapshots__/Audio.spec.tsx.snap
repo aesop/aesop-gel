@@ -61,7 +61,7 @@ exports[`<Audio /> should render base component correctly 1`] = `
         <button
           class="base dark disabled base orange forward"
           disabled=""
-          title="Seek Backward"
+          title="Seek Forward"
           type="button"
         >
           <svg

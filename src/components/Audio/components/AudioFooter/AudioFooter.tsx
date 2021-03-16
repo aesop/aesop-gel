@@ -31,7 +31,7 @@ const AudioFooter = React.memo<AudioFooterProps>(
         <div className={styles.controls}>
           <SeekButton
             copy={{
-              title: copy.seekBackward,
+              title: copy.seekForward,
             }}
             direction="forward"
             isLoading={isLoading}
