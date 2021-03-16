@@ -60,8 +60,8 @@ const Audio: FC<AudioProps> = ({
           loading: copy.loading,
           pause: copy.pause,
           play: copy.play,
-          seekBackwardTitle: copy.seekBackward,
-          seekForwardTitle: copy.seekForward,
+          seekBackward: copy.seekBackward,
+          seekForward: copy.seekForward,
         }}
         duration={duration}
         isLoading={isLoading}

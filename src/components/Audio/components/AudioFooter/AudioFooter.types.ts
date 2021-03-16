@@ -1,4 +1,4 @@
-import type { ProgressColor } from '../../Audio.types';
+import type { AudioCopy, ProgressColor } from '../../Audio.types';
 
 type OnPlayPauseButtonClick = () => void;
 type OnSeekBackwardButtonClick = () => void;
@@ -6,15 +6,7 @@ type OnSeekForwardButtonClick = () => void;
 
 type AudioFooterProps = {
   audioUrl?: string;
-  copy?: {
-    downloadTitle?: string;
-    downloadLabel?: string;
-    loading?: string;
-    pause?: string;
-    play?: string;
-    seekBackwardTitle?: string;
-    seekForwardTitle?: string;
-  };
+  copy?: AudioCopy;
   duration?: number;
   isLoading?: boolean;
   isPlaying?: boolean;
